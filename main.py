@@ -4,6 +4,8 @@ import streamlit.components.v1 as components
 
 st.set_page_config(page_title="UAserver AI Chat", layout="wide")
 st.title(" UAserver AI 2.5")
+st.write("Name = AIfree")
+st.write("code = artificialIT!1")
 
 # Fullscreen chat HTML/JS
 html_code = """
