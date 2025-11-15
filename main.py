@@ -32,22 +32,6 @@ html_code = """
             background: #161b22;
         }
 
-        #signin-btn {
-            padding: 10px 20px;
-            margin: 15px auto 0;
-            border-radius: 8px;
-            border: none;
-            background: #007bff; /* Blue for a login action */
-            color: white;
-            cursor: pointer;
-            font-size: 16px;
-            display: block;
-        }
-
-        #signin-btn:hover {
-            background: #0056b3;
-        }
-
         #chat {
             flex: 1;
             overflow-y: auto;
@@ -127,7 +111,6 @@ html_code = """
 </head>
 <body>
     <div id="chat-container">
-        <button id="signin-btn">Sign In to Puter</button>
         <div id="chat"></div>
         <div id="input-container">
             <input type="text" id="user_input" placeholder="Type your message..." />
@@ -140,7 +123,6 @@ html_code = """
         const chatDiv = document.getElementById("chat");
         const userInput = document.getElementById("user_input");
         const sendBtn = document.getElementById("send-btn");
-        const signInBtn = document.getElementById("signin-btn"); // Get the new button
 
         function appendMessage(text, sender) {
             const msg = document.createElement("div");
@@ -154,7 +136,23 @@ html_code = """
             const message = userInput.value.trim();
             if (!message) return;
 
-            appendMessage(message, "user");
+            // Check if the user is authenticated via Puter
+            if (!puter.auth.isSignedIn()) {
+                appendMessage("Puter: You must sign in before chatting. Opening sign-in window...", "ai");
+                puter.auth.signIn()
+                    .then(user => {
+                        if (user) {
+                            // If sign in is successful, retry sending the message
+                            appendMessage(`Puter: Signed in as ${user.username}. Please send your message again.`, "ai");
+                        }
+                    })
+                    .catch(err => {
+                        appendMessage("Puter: Sign In failed or was cancelled.", "ai");
+                    });
+                return; // Stop here, user needs to re-enter message after login
+            }
+            
+            appendMessage(message, "user");
             userInput.value = "";
 
             // Call Puter AI
@@ -182,22 +180,6 @@ html_code = """
                 });
         }
 
-        // --- NEW SIGN-IN FUNCTIONALITY ---
-        signInBtn.addEventListener("click", () => {
-            puter.auth.signIn()
-                .then(user => {
-                    if (user) {
-                        appendMessage(`Puter: Successfully signed in as ${user.username}`, "ai");
-                        signInBtn.style.display = 'none'; // Hide button after success
-                    } else {
-                        appendMessage("Puter: Sign in window closed or failed.", "ai");
-                    }
-                })
-                .catch(err => {
-                    appendMessage("Puter: Sign In call failed: " + JSON.stringify(err), "ai");
-                });
-        });
-
         sendBtn.addEventListener("click", sendMessage);
         userInput.addEventListener("keypress", function(e) {
             if (e.key === "Enter") {
@@ -211,4 +193,3 @@ html_code = """
 """
 
 components.html(html_code, height=900, scrolling=True)
-
