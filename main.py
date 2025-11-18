@@ -11,24 +11,32 @@ html_code = """<!DOCTYPE html>
         body {
             margin: 0;
             height: 100vh;
-            background: #000;
+            background: linear-gradient(130deg, #8A2BE2, #1E90FF, #00FFFF, #8A2BE2);
+            background-size: 400% 400%;
+            animation: neonMove 16s ease infinite;
             font-family: Arial, sans-serif;
             color: #fff;
             display: flex;
             justify-content: center;
+        }
+        @keyframes neonMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         #chat-container {
             width: 100%;
             height: 100vh;
             display: flex;
             flex-direction: column;
-            background: #000;
+            background: rgba(0,0,0,0.35);
+            backdrop-filter: blur(12px);
         }
         #chat {
             flex: 1;
             overflow-y: auto;
             padding: 20px;
-            background: #000;
+            background: transparent;
         }
         .message {
             margin: 10px 0;
@@ -38,33 +46,36 @@ html_code = """<!DOCTYPE html>
             line-height: 1.5;
             word-wrap: break-word;
             font-size: 16px;
+            box-shadow: 0 0 8px rgba(0,255,255,0.6);
         }
         .user {
-            background: #222;
+            background: rgba(255,0,255,0.3);
             color: #fff;
             align-self: flex-end;
             border-bottom-right-radius: 0;
+            box-shadow: 0 0 12px #ff00ff;
         }
         .ai {
-            background: #111;
+            background: rgba(0,255,255,0.3);
             color: #0ff;
             align-self: flex-start;
             border-bottom-left-radius: 0;
             font-size: 18px;
             white-space: pre-wrap;
+            box-shadow: 0 0 12px #0ff;
         }
         #input-container {
             display: flex;
             padding: 15px;
-            background: #000;
-            border-top: 1px solid #111;
+            background: rgba(0,0,0,0.35);
+            border-top: 1px solid #0ff;
         }
         #user_input {
             flex: 1;
             border-radius: 25px;
             padding: 14px 20px;
-            border: 1px solid #111;
-            background: #000;
+            border: 1px solid #0ff;
+            background: rgba(0,0,0,0.6);
             color: #fff;
             outline: none;
             font-size: 16px;
@@ -74,23 +85,25 @@ html_code = """<!DOCTYPE html>
             padding: 14px 24px;
             border-radius: 25px;
             border: none;
-            background: #333;
+            background: #1E90FF;
             color: white;
             cursor: pointer;
             font-size: 16px;
+            box-shadow: 0 0 10px #1E90FF;
         }
         #send-btn:hover {
-            background: #555;
+            background: #00FFFF;
+            box-shadow: 0 0 12px #00FFFF;
         }
         ::-webkit-scrollbar {
             width: 8px;
         }
         ::-webkit-scrollbar-thumb {
-            background: #222;
+            background: #0ff;
             border-radius: 4px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #444;
+            background: #1E90FF;
         }
     </style>
 </head>
