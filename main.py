@@ -162,4 +162,27 @@ html_code = """<!DOCTYPE html>
     </script>
 </body>
 </html>"""
+st.markdown("""
+<style>
+/* Full neon gradient for the entire Streamlit app */
+body, [data-testid="stAppViewContainer"] > .main, .css-18e3th9 {
+    height: 100vh;
+    background: linear-gradient(130deg, #8A2BE2, #1E90FF, #00FFFF, #8A2BE2);
+    background-size: 400% 400%;
+    animation: neonMove 16s ease infinite;
+    overflow: hidden;
+}
+
+/* Neon animation keyframes */
+@keyframes neonMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Optional: hide Streamlit footer and header for fullscreen look */
+footer, header { visibility: hidden; }
+</style>
+""", unsafe_allow_html=True)
+
 components.html(html_code, height=900, scrolling=True)
