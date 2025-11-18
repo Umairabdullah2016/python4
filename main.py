@@ -1,9 +1,36 @@
 import streamlit as st
 import streamlit.components.v1 as components
+
+# Streamlit page config
 st.set_page_config(page_title="UAserver AI Chat", layout="wide")
+
+# Inject CSS for Streamlit background + full page neon gradient
+st.markdown("""
+<style>
+/* Make the full Streamlit app background match neon animated gradient */
+[data-testid="stAppViewContainer"] > .main {
+    background: linear-gradient(130deg, #8A2BE2, #1E90FF, #00FFFF, #8A2BE2);
+    background-size: 400% 400%;
+    animation: neonMove 16s ease infinite;
+}
+[data-testid="stSidebar"] > div:first-child {
+    background: rgba(0,0,0,0.35);
+}
+@keyframes neonMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+/* Optional: hide Streamlit footer and header for fullscreen look */
+footer, header {visibility: hidden;}
+</style>
+""", unsafe_allow_html=True)
+
 st.title(" UAserver AI 2.5")
 st.write("Name = AIfree")
 st.write("code = artificialIT!1")
+
+# HTML component for AI chat
 html_code = """<!DOCTYPE html>
 <html>
 <head>
@@ -11,18 +38,11 @@ html_code = """<!DOCTYPE html>
         body {
             margin: 0;
             height: 100vh;
-            background: linear-gradient(130deg, #8A2BE2, #1E90FF, #00FFFF, #8A2BE2);
-            background-size: 400% 400%;
-            animation: neonMove 16s ease infinite;
+            background: transparent;
             font-family: Arial, sans-serif;
             color: #fff;
             display: flex;
             justify-content: center;
-        }
-        @keyframes neonMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
         #chat-container {
             width: 100%;
