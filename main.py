@@ -148,10 +148,10 @@ html_code = """<!DOCTYPE html>
                     } else {
                         content = "No response from AI";
                     }
-                    appendMessage("Orin Core Pro" + content, "ai");
+                    appendMessage("Orin Core Pro: " + content, "ai");
                 })
                 .catch(err => {
-                    appendMessage("🔷 UAserver AI: Error - " + JSON.stringify(err), "ai");
+                    appendMessage("Orin Core Pro: Sorry, There was an error. If you are a developer, you an use this error message to help You! error - " + JSON.stringify(err), "ai");
                 });
         }
         sendBtn.addEventListener("click", sendMessage);
