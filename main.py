@@ -1,9 +1,11 @@
 import streamlit as st
 import streamlit.components.v1 as components
 st.set_page_config(page_title="UAserver AI Chat", layout="wide")
-st.title(" UAserver AI 2.5")
-st.write("Name = AIfree")
-st.write("code = artificialIT!1")
+st.title("Orin Core Pro")
+st.write("THis is the All New Orin Core Pro, the chat is Slow but THis AI Can Solve Complex Problems 
+st.write("Puter Name = AIfree")
+st.write("Puter Password = artificialIT!1")
+st.write
 html_code = """<!DOCTYPE html>
 <html>
 <head>
@@ -132,7 +134,7 @@ html_code = """<!DOCTYPE html>
             if (!message) return;
             appendMessage(message, "user");
             userInput.value = "";
-            puter.ai.chat(message, { model: "gemini-2.0-flash" })
+            puter.ai.chat(message, { model: "gpt-5.2-pro" })
                 .then(response => {
                     let content = "";
                     if (response.message && response.message.content) {
@@ -146,7 +148,7 @@ html_code = """<!DOCTYPE html>
                     } else {
                         content = "No response from AI";
                     }
-                    appendMessage("🔷 UAserver AI: " + content, "ai");
+                    appendMessage("Orin Core Pro" + content, "ai");
                 })
                 .catch(err => {
                     appendMessage("🔷 UAserver AI: Error - " + JSON.stringify(err), "ai");
