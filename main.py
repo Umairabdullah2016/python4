@@ -2,7 +2,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 st.set_page_config(page_title="The All New Orin Core Pro AI", layout="wide")
 st.title("Orin Core Pro")
-st.write("This is the All New Orin Core Pro AI, the chat is Slow but This AI Can Solve Complex Problems")
+st.markdown("This is the All New Orin Core Pro AI, the chat is Slow but This AI Can Solve Complex Problems")
 st.write("Puter Name = AIfree")
 st.write("Puter Password = artificialIT!1")
 st.write
