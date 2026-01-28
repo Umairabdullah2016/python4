@@ -185,5 +185,7 @@ body, [data-testid="stAppViewContainer"] > .main, .css-18e3th9 {
 footer, header { visibility: hidden; }
 </style>
 """, unsafe_allow_html=True)
+st.write("Published 27th January 2026")
+st.write("Copywright Orin©")
 
 components.html(html_code, height=900, scrolling=True)
