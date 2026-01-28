@@ -186,7 +186,5 @@ footer, header { visibility: hidden; }
 """, unsafe_allow_html=True)
 
 components.html(html_code, height=900, scrolling=True)
-st.link_button("Try the all new Orin Speed AI", "orinspeed.streamlit.app")
-    
-st.write("Published 27th January 2026")
+st.write("Published 28th January 2026")
 st.write("Copywright Orin Intelligence©")
