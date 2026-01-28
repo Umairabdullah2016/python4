@@ -189,3 +189,5 @@ st.write("Published 27th January 2026")
 st.write("Copywright Orin©")
 
 components.html(html_code, height=900, scrolling=True)
+st.write("Published 27th January 2026")
+st.write("Copywright Orin©")
